@@ -1,0 +1,1224 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TechFix | Reparación y Mantenimiento</title>
+
+<style>
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020617;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   FONDO ANIMADO
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#22c55e;
+    filter:blur(180px);
+    opacity:.15;
+    top:-200px;
+    left:-150px;
+    animation:flotar 8s infinite alternate;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#3b82f6;
+    filter:blur(180px);
+    opacity:.15;
+    bottom:-200px;
+    right:-150px;
+    animation:flotar2 10s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes flotar{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(150px,100px);
+    }
+}
+
+@keyframes flotar2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-150px,-100px);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(2,6,23,.8);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#22c55e;
+    animation:logoEntrada 1s ease;
+}
+
+.logo span{
+    color:white;
+}
+
+@keyframes logoEntrada{
+    from{
+        opacity:0;
+        transform:translateX(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#22c55e;
+    text-shadow:0 0 15px #22c55e;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:650px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:80px 20px;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(34,197,94,.15),
+    transparent 45%);
+}
+
+.hero-content{
+    max-width:850px;
+    animation:heroEntrada 1.2s ease;
+}
+
+@keyframes heroEntrada{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border:1px solid #22c55e;
+    border-radius:30px;
+    color:#22c55e;
+    margin-bottom:20px;
+
+    animation:pulso 2s infinite;
+}
+
+@keyframes pulso{
+    0%,100%{
+        box-shadow:0 0 0 rgba(34,197,94,0);
+    }
+
+    50%{
+        box-shadow:0 0 25px rgba(34,197,94,.5);
+    }
+}
+
+.hero h1{
+    font-size:60px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#22c55e;
+    text-shadow:0 0 30px rgba(34,197,94,.5);
+}
+
+.hero p{
+    color:#cbd5e1;
+    font-size:19px;
+    line-height:1.7;
+    max-width:700px;
+    margin:auto;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.buttons-hero{
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 30px;
+    margin:8px;
+
+    border-radius:10px;
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-green{
+    background:#22c55e;
+    color:#020617;
+    box-shadow:0 0 20px rgba(34,197,94,.25);
+}
+
+.btn-green:hover{
+    transform:translateY(-5px) scale(1.04);
+    box-shadow:0 0 35px rgba(34,197,94,.6);
+}
+
+.btn-blue{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-blue:hover{
+    transform:translateY(-5px) scale(1.04);
+    box-shadow:0 0 30px rgba(37,99,235,.6);
+}
+
+/* =========================
+   SERVICIOS
+========================= */
+
+.services{
+    padding:90px 8%;
+    text-align:center;
+}
+
+.title{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+
+    padding:35px 25px;
+
+    background:rgba(30,41,59,.75);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    transition:.4s;
+
+    backdrop-filter:blur(10px);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+
+    width:100%;
+    height:3px;
+
+    top:0;
+    left:-100%;
+
+    background:#22c55e;
+
+    transition:.5s;
+}
+
+.card:hover::before{
+    left:0;
+}
+
+.card:hover{
+    transform:translateY(-12px) scale(1.03);
+
+    border-color:#22c55e;
+
+    box-shadow:
+    0 15px 50px rgba(34,197,94,.15);
+}
+
+.icon{
+    font-size:60px;
+    margin-bottom:20px;
+
+    transition:.4s;
+}
+
+.card:hover .icon{
+    transform:scale(1.2) rotate(5deg);
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#94a3b8;
+    line-height:1.6;
+}
+
+/* =========================
+   SECCIÓN DESTACADA
+========================= */
+
+.features{
+    padding:80px 8%;
+    background:#020617;
+}
+
+.feature-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.feature{
+    padding:30px;
+    text-align:center;
+
+    border-radius:15px;
+
+    background:#0f172a;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+}
+
+.feature strong{
+    display:block;
+    font-size:35px;
+    color:#22c55e;
+    margin-bottom:10px;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.contact{
+    padding:90px 8%;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(15,23,42,.95),
+    rgba(2,6,23,.95)
+    );
+}
+
+.form{
+    max-width:700px;
+    margin:40px auto 0;
+
+    padding:40px;
+
+    background:rgba(30,41,59,.8);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:20px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+
+    animation:formFloat 4s infinite alternate;
+}
+
+@keyframes formFloat{
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-5px);
+    }
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    padding:15px;
+
+    background:#020617;
+
+    color:white;
+
+    border:1px solid #334155;
+
+    border-radius:10px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#22c55e;
+
+    box-shadow:
+    0 0 15px rgba(34,197,94,.2);
+}
+
+textarea{
+    height:130px;
+    resize:none;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.submit,
+.email{
+    border:0;
+
+    padding:16px;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.submit{
+    background:#25D366;
+}
+
+.email{
+    background:#2563eb;
+}
+
+.submit:hover,
+.email:hover{
+    transform:translateY(-4px);
+    filter:brightness(1.15);
+}
+
+/* =========================
+   WHATSAPP FLOTANTE
+========================= */
+
+.whatsapp{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+
+    color:white;
+
+    text-decoration:none;
+
+    box-shadow:
+    0 0 0 0 rgba(37,211,102,.5);
+
+    z-index:200;
+
+    animation:whatsappPulse 2s infinite;
+}
+
+@keyframes whatsappPulse{
+
+    0%{
+        box-shadow:
+        0 0 0 0 rgba(37,211,102,.5);
+    }
+
+    70%{
+        box-shadow:
+        0 0 0 20px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow:
+        0 0 0 0 rgba(37,211,102,0);
+    }
+}
+
+.whatsapp:hover{
+    transform:scale(1.15);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    background:#020617;
+
+    color:#64748b;
+
+    border-top:1px solid #1e293b;
+}
+
+footer strong{
+    color:#22c55e;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav a{
+        margin:0 7px;
+        font-size:14px;
+    }
+
+    .hero{
+        min-height:550px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        grid-template-columns:1fr;
+    }
+
+    .form{
+        padding:25px;
+    }
+
+    .title{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="logo">
+⚡ TechFix <span>MX</span>
+</div>
+
+<nav>
+
+<a href="#inicio">Inicio</a>
+
+<a href="#servicios">Servicios</a>
+
+<a href="#contacto">Solicitar</a>
+
+</nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<div class="badge">
+🔧 Servicio profesional
+</div>
+
+<h1>
+
+Dale nueva vida a tu
+<span>equipo</span>
+
+</h1>
+
+<p>
+
+Mantenimiento y diagnóstico para
+Xbox, PlayStation, PC y laptops.
+Cuida tu equipo y evita problemas
+por sobrecalentamiento y suciedad.
+
+</p>
+
+
+<div class="buttons-hero">
+
+<a
+href="#contacto"
+class="btn btn-green">
+
+🛠️ Solicitar mantenimiento
+
+</a>
+
+
+<a
+href="https://wa.me/528992062807"
+target="_blank"
+class="btn btn-blue">
+
+📱 WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SERVICIOS
+========================= -->
+
+<section class="services" id="servicios">
+
+<h2 class="title">
+Nuestros servicios
+</h2>
+
+<p class="subtitle">
+Mantenimiento para tus equipos favoritos
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">
+🎮
+</div>
+
+<h3>
+Xbox One S
+</h3>
+
+<p>
+Limpieza interna, mantenimiento,
+revisión de temperatura y diagnóstico.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🎮
+</div>
+
+<h3>
+PlayStation 4 / 3
+</h3>
+
+<p>
+Limpieza, mantenimiento,
+ventilación y diagnóstico.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🖥️
+</div>
+
+<h3>
+PC
+</h3>
+
+<p>
+Limpieza, optimización,
+mantenimiento y diagnóstico.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+💻
+</div>
+
+<h3>
+Laptop
+</h3>
+
+<p>
+Limpieza interna,
+temperatura y mantenimiento.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CARACTERÍSTICAS
+========================= -->
+
+<section class="features">
+
+<div class="feature-container">
+
+
+<div class="feature">
+
+<strong>⚡</strong>
+
+Mantenimiento rápido
+
+<p>
+Atención para revisar
+el estado de tu equipo.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<strong>🔧</strong>
+
+Diagnóstico
+
+<p>
+Identificamos posibles
+problemas del equipo.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<strong>🛡️</strong>
+
+Mantenimiento preventivo
+
+<p>
+Ayuda a mantener tu equipo
+en mejores condiciones.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FORMULARIO
+========================= -->
+
+<section class="contact" id="contacto">
+
+<h2
+class="title"
+style="text-align:center">
+
+Solicita tu mantenimiento
+
+</h2>
+
+<p
+class="subtitle"
+style="text-align:center">
+
+Cuéntanos qué equipo tienes y qué problema presenta.
+
+</p>
+
+
+<form
+class="form"
+onsubmit="enviarWhatsApp(event)">
+
+
+<div class="form-group">
+
+<label>
+👤 Nombre
+</label>
+
+<input
+type="text"
+id="nombre"
+placeholder="Tu nombre"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+📞 Teléfono
+</label>
+
+<input
+type="tel"
+id="telefono"
+placeholder="Tu número"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+🖥️ Equipo
+</label>
+
+<select
+id="equipo"
+required>
+
+<option value="">
+Selecciona tu equipo
+</option>
+
+<option>
+Xbox One S
+</option>
+
+<option>
+PlayStation 4
+</option>
+
+<option>
+PlayStation 3
+</option>
+
+<option>
+PC
+</option>
+
+<option>
+Laptop
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+🔧 Servicio
+</label>
+
+<select
+id="servicio"
+required>
+
+<option value="">
+Selecciona el servicio
+</option>
+
+<option>
+Limpieza y mantenimiento
+</option>
+
+<option>
+Diagnóstico
+</option>
+
+<option>
+Reparación
+</option>
+
+<option>
+Cambio de pasta térmica
+</option>
+
+<option>
+Optimización
+</option>
+
+<option>
+Otro
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+📝 Describe el problema
+</label>
+
+<textarea
+id="problema"
+placeholder="Ejemplo: Mi Xbox se apaga después de unos minutos..."
+required>
+</textarea>
+
+</div>
+
+
+<div class="buttons">
+
+
+<button
+class="submit"
+type="submit">
+
+📱 Enviar por WhatsApp
+
+</button>
+
+
+<button
+class="email"
+type="button"
+onclick="enviarCorreo()">
+
+📧 Enviar por correo
+
+</button>
+
+
+</div>
+
+</form>
+
+</section>
+
+
+<!-- =========================
+     BOTÓN WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/528992062807"
+target="_blank"
+title="Escríbeme por WhatsApp">
+
+💬
+
+</a>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<strong>
+⚡ TechFix MX
+</strong>
+
+<br><br>
+
+Mantenimiento de consolas, PC y laptops.
+
+<br><br>
+
+📱 WhatsApp: 899 206 2807
+
+<br>
+
+📧 dzlink642@gmail.com
+
+<br><br>
+
+© 2026 TechFix MX
+
+</footer>
+
+
+<script>
+
+/* =========================
+   OBTENER DATOS
+========================= */
+
+function obtenerDatos(){
+
+return {
+
+nombre:
+document.getElementById("nombre").value,
+
+telefono:
+document.getElementById("telefono").value,
+
+equipo:
+document.getElementById("equipo").value,
+
+servicio:
+document.getElementById("servicio").value,
+
+problema:
+document.getElementById("problema").value
+
+};
+
+}
+
+
+/* =========================
+   CREAR MENSAJE
+========================= */
+
+function crearMensaje(){
+
+const d = obtenerDatos();
+
+return `🔧 SOLICITUD DE MANTENIMIENTO
+
+👤 Nombre:
+${d.nombre}
+
+📞 Teléfono:
+${d.telefono}
+
+🖥️ Equipo:
+${d.equipo}
+
+🛠️ Servicio:
+${d.servicio}
+
+📝 Problema:
+${d.problema}
+
+📍 Cliente interesado en solicitar mantenimiento.`;
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function enviarWhatsApp(event){
+
+event.preventDefault();
+
+const mensaje =
+crearMensaje();
+
+const numero =
+"528992062807";
+
+const url =
+"https://wa.me/" +
+numero +
+"?text=" +
+encodeURIComponent(mensaje);
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+
+/* =========================
+   CORREO
+========================= */
+
+function enviarCorreo(){
+
+const datos =
+obtenerDatos();
+
+const asunto =
+"Solicitud de mantenimiento - " +
+datos.equipo;
+
+const cuerpo =
+crearMensaje();
+
+const url =
+"mailto:dzlink642@gmail.com" +
+"?subject=" +
+encodeURIComponent(asunto) +
+"&body=" +
+encodeURIComponent(cuerpo);
+
+window.location.href =
+url;
+
+}
+
+</script>
+
+</body>
+</html>
+```
